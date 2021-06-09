@@ -126,12 +126,6 @@ namespace WebAppNetCore.Controllers
 		[ValidateAntiForgeryToken]
 		public IActionResult DeletePost(int? id)
 		{
-
-			if (id == null || id == 0)
-			{
-				return NotFound();
-			}
-
 			var obj = _db.Category.Find(id);
 
 			if (obj == null)
