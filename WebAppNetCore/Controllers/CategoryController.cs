@@ -23,11 +23,10 @@ namespace WebAppNetCore.Controllers
 			return View(objList);
 		}
 
-
+		//GET CREATE
 		public IActionResult Create()
 		{
-			IEnumerable<Models.Category> objList = _db.Category;
-			return View(objList);
+			return View();
 		}
 
 
