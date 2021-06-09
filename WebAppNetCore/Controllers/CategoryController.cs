@@ -30,6 +30,7 @@ namespace WebAppNetCore.Controllers
 		}
 
 
+
 		//POST CREATE
 		[HttpPost]
 		[ValidateAntiForgeryToken]
@@ -48,5 +49,114 @@ namespace WebAppNetCore.Controllers
 		}
 
 
+
+		//GET EDIT
+		public IActionResult Edit(int? id)
+		{
+			if(id == null || id == 0)
+			{
+				return NotFound();
+			}
+
+			var obj = _db.Category.Find(id);
+			
+			if(obj == null)
+			{
+				return NotFound();
+			}
+
+			return View(obj);
+		}
+
+
+
+
+
+
+		//POST Edit
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult Edit(Models.Category obj)
+		{
+
+			if (ModelState.IsValid)
+			{
+				_db.Category.Update(obj);
+				_db.SaveChanges();
+				return RedirectToAction("Index");
+			}
+			return View(obj);
+
+
+		}
+
+
+
+
+
+
+
+
+
+		//GET DELETE
+		public IActionResult Delete(int? id)
+		{
+			if (id == null || id == 0)
+			{
+				return NotFound();
+			}
+
+			var obj = _db.Category.Find(id);
+
+			if (obj == null)
+			{
+				return NotFound();
+			}
+
+			return View(obj);
+		}
+
+
+
+
+
+
+		//POST DELETE
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult DeletePost(int? id)
+		{
+
+			if (id == null || id == 0)
+			{
+				return NotFound();
+			}
+
+			var obj = _db.Category.Find(id);
+
+			if (obj == null)
+			{
+				return NotFound();
+			}
+
+
+			_db.Category.Remove(obj);
+			_db.SaveChanges();
+			return RedirectToAction("Index");
+
+		}
+
+
+
+
+
+
+
+
+
 	}
 }
+
+
+
+
