@@ -30,5 +30,23 @@ namespace WebAppNetCore.Controllers
 		}
 
 
+		//POST CREATE
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult Create(Models.Category obj)
+		{
+
+			if (ModelState.IsValid) 
+			{
+				_db.Category.Add(obj);
+				_db.SaveChanges();
+				return RedirectToAction("Index");
+			}
+			return View(obj);
+
+			
+		}
+
+
 	}
 }

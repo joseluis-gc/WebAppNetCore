@@ -13,10 +13,15 @@ namespace WebAppNetCore.Models
 		public int CategoryId{ get; set; }
 		
 		
+
+		[Required]
 		[DisplayName("Category Name")]
 		public String CategoryName{ get; set; }
 		
 		
+
+		[Required]
+		[Range(1,int.MaxValue, ErrorMessage ="Value has to be bigger than 0.")]
 		[DisplayName("Display Order")]
 		public int DisplayOrder{ get; set; }
 
