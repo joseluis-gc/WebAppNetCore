@@ -14,5 +14,8 @@ namespace WebAppNetCore.Data
 		}
 
 		public DbSet<Models.Category> Category { get; set; }
+		public DbSet<Models.ApplicationType> ApplicationType { get; set; }
+		public DbSet<Models.Product> Product { get; set; }
+
 	}
 }
