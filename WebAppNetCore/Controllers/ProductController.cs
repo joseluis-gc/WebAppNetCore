@@ -20,6 +20,12 @@ namespace WebAppNetCore.Controllers
 		public IActionResult Index()
 		{
 			IEnumerable<Models.Product> objList = _db.Product;
+
+			foreach(var obj in objList)
+			{
+				obj.Category = _db.Category.FirstOrDefault(u => u.CategoryId == obj.Category_id);
+			}
+
 			return View(objList);
 		}
 
